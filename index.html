@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezha Fahlevi | Kreator AI & Desainer Grafis</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portofolio desain kreatif, ide berani, dan pengalaman visual oleh Rezha Fahlevi.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Playfair Display untuk Serif (Headlines), Manrope untuk Sans-serif (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepBlack: '#111111',
+                        warmCream: '#F4F0E8',
+                        sageGreen: '#8A9A8E',
+                        metallicGold: '#C6A15E',
+                        deepBrown: '#3A2A20',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Manrope"', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        widest: '.25em',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Base Styling & Grain Texture */
+        body {
+            background-color: #111111;
+            color: #F4F0E8;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Noise/Grain Overlay for Editorial Feel */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3A2A20;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C6A15E;
+        }
+
+        /* Reveal Animations on Scroll */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Image Hover Effects */
+        .img-hover-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+        .img-hover-wrap img {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .img-hover-wrap:hover img {
+            transform: scale(1.05);
+        }
+        .img-hover-overlay {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .img-hover-wrap:hover .img-hover-overlay {
+            opacity: 1;
+        }
+
+        /* Text outline style */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px #8A9A8E;
+            transition: all 0.3s ease;
+        }
+        .text-outline:hover {
+            color: #C6A15E;
+            -webkit-text-stroke: 1px #C6A15E;
+        }
+
+        /* Form input styling */
+        .form-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #8A9A8E;
+            border-radius: 0;
+            padding: 1rem 0;
+            width: 100%;
+            color: #F4F0E8;
+            font-family: 'Manrope', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-bottom-color: #C6A15E;
+        }
+        .form-input::placeholder {
+            color: #8A9A8E;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Utility */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-warmCream selection:bg-metallicGold selection:text-deepBlack">
+
+    <!-- 01 — NAVIGASI / HEADER -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6 border-b border-transparent">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <a href="#" class="font-serif text-xl md:text-2xl font-bold tracking-wide text-warmCream z-50 uppercase">
+                Rezha <span class="text-metallicGold italic">Fahlevi</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex space-x-10 items-center">
+                <a href="#beranda" class="text-xs font-semibold tracking-widest uppercase hover:text-metallicGold transition-colors text-sageGreen">Beranda</a>
+                <a href="#tentang" class="text-xs font-semibold tracking-widest uppercase hover:text-metallicGold transition-colors text-sageGreen">Tentang</a>
+                <a href="#karya" class="text-xs font-semibold tracking-widest uppercase hover:text-metallicGold transition-colors text-sageGreen">Project</a>
+                <a href="#proses" class="text-xs font-semibold tracking-widest uppercase hover:text-metallicGold transition-colors text-sageGreen">Proses</a>
+                <a href="#kontak" class="text-xs font-semibold tracking-widest uppercase hover:text-metallicGold transition-colors text-sageGreen">Kontak</a>
+                
+                <a href="#kontak" class="group flex items-center gap-2 border border-warmCream/20 rounded-full py-2 px-6 hover:bg-warmCream hover:text-deepBlack transition-all duration-300">
+                    <span class="text-xs font-bold tracking-widest uppercase">Mari Bekerja Sama</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-warmCream z-50 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-deepBlack flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300 z-40">
+            <nav class="flex flex-col items-center space-y-8">
+                <a href="#beranda" class="mobile-link font-serif text-3xl uppercase tracking-wider hover:text-metallicGold transition-colors">Beranda</a>
+                <a href="#tentang" class="mobile-link font-serif text-3xl uppercase tracking-wider hover:text-metallicGold transition-colors">Tentang</a>
+                <a href="#karya" class="mobile-link font-serif text-3xl uppercase tracking-wider hover:text-metallicGold transition-colors">Project</a>
+                <a href="#proses" class="mobile-link font-serif text-3xl uppercase tracking-wider hover:text-metallicGold transition-colors">Proses</a>
+                <a href="#kontak" class="mobile-link font-serif text-3xl uppercase tracking-wider hover:text-metallicGold transition-colors">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 02 — HERO SECTION -->
+    <section id="beranda" class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+        
+        <!-- Abstract Background Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] bg-metallicGold/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <!-- Floating Decorative Images (Visible on Desktop) -->
+        <div class="hidden lg:block absolute top-1/4 right-[10%] w-48 h-64 img-hover-wrap rounded-sm rotate-6 opacity-60">
+            <img src="https://placehold.co/400x600/3A2A20/8A9A8E?text=ART" alt="Decorative Artwork" class="w-full h-full object-cover">
+        </div>
+        <div class="hidden lg:block absolute bottom-1/4 left-[5%] w-56 h-40 img-hover-wrap rounded-sm -rotate-3 opacity-40">
+            <img src="https://placehold.co/500x350/8A9A8E/111111?text=DESIGN" alt="Decorative Design" class="w-full h-full object-cover grayscale">
+        </div>
+
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="max-w-5xl mx-auto text-center md:text-left flex flex-col items-center md:items-start">
+                
+                <span class="reveal-up text-sageGreen text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-6 block">
+                    Desain Kreatif • Seni Visual • Branding
+                </span>
+                
+                <h1 class="reveal-up reveal-delay-1 font-serif text-5xl md:text-7xl lg:text-[7rem] leading-[1.1] font-bold text-warmCream mb-8 uppercase tracking-tighter">
+                    Mengubah Ide <br>
+                    <span class="text-metallicGold italic font-normal">Menjadi Cerita</span> <br>
+                    Visual.
+                </h1>
+                
+                <p class="reveal-up reveal-delay-2 font-sans text-lg md:text-xl text-sageGreen max-w-2xl font-light mb-12 leading-relaxed">
+                    Desain kreatif, ide berani, dan pengalaman visual yang dibuat khusus untuk membuat brand Anda tampil berbeda, bermakna, dan tak terlupakan.
+                </p>
+                
+                <div class="reveal-up reveal-delay-3 flex flex-col sm:flex-row items-center gap-6">
+                    <a href="#karya" class="w-full sm:w-auto bg-warmCream text-deepBlack font-bold text-xs tracking-widest uppercase px-10 py-5 rounded-full hover:bg-metallicGold hover:text-deepBlack transition-colors duration-300 flex justify-center items-center gap-3">
+                        Lihat Karya
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                    <a href="#kontak" class="w-full sm:w-auto text-warmCream border-b border-warmCream/30 pb-1 font-bold text-xs tracking-widest uppercase hover:border-metallicGold hover:text-metallicGold transition-colors duration-300 flex justify-center">
+                        Mari Berkolaborasi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 — INTRODUKSI -->
+    <section id="tentang" class="py-24 md:py-32 bg-deepBlack border-t border-warmCream/10 relative">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                
+                <!-- Left: Title & Text -->
+                <div class="lg:col-span-7">
+                    <h2 class="reveal-up font-serif text-4xl md:text-5xl lg:text-6xl text-warmCream mb-8 leading-tight">
+                        Hai, Aku <span class="italic text-metallicGold">Rezha Fahlevi</span>
+                    </h2>
+                    <p class="reveal-up reveal-delay-1 font-sans text-xl md:text-2xl text-sageGreen font-light leading-relaxed mb-10 max-w-3xl">
+                        Aku menciptakan karya visual yang berani, bermakna, dan memiliki daya tarik estetika untuk mengubah ide abstrak menjadi pengalaman emosional yang berkesan.
+                    </p>
+                </div>
+
+                <!-- Right: Stats Grid -->
+                <div class="lg:col-span-5 grid grid-cols-2 gap-8 lg:gap-12 reveal-up reveal-delay-2">
+                    <div class="border-t border-sageGreen/30 pt-6">
+                        <span class="block font-serif text-5xl text-metallicGold mb-2">50+</span>
+                        <span class="font-sans text-xs uppercase tracking-widest text-sageGreen font-bold">Proyek Selesai</span>
+                    </div>
+                    <div class="border-t border-sageGreen/30 pt-6">
+                        <span class="block font-serif text-5xl text-metallicGold mb-2">30+</span>
+                        <span class="font-sans text-xs uppercase tracking-widest text-sageGreen font-bold">Klien Puas</span>
+                    </div>
+                    <div class="border-t border-sageGreen/30 pt-6">
+                        <span class="block font-serif text-5xl text-metallicGold mb-2">6+</span>
+                        <span class="font-sans text-xs uppercase tracking-widest text-sageGreen font-bold">Tahun Pengalaman</span>
+                    </div>
+                    <div class="border-t border-sageGreen/30 pt-6">
+                        <span class="block font-serif text-5xl text-metallicGold mb-2">∞</span>
+                        <span class="font-sans text-xs uppercase tracking-widest text-sageGreen font-bold">Ide Kreatif</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 — KARYA PILIHAN -->
+    <section id="karya" class="py-24 md:py-32 bg-[#141414]">
+        <div class="container mx-auto px-6 md:px-12">
+            
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div class="reveal-up">
+                    <h2 class="font-serif text-5xl md:text-7xl text-warmCream uppercase tracking-tighter mb-4">Karya Pilihan</h2>
+                    <p class="font-sans text-sageGreen text-lg max-w-md">Kumpulan proyek pilihan, eksperimen, dan eksplorasi visual terbaik.</p>
+                </div>
+                
+                <!-- Filters (Visual only for HTML demo) -->
+                <div class="reveal-up reveal-delay-1 flex flex-wrap gap-4 md:justify-end hide-scrollbar overflow-x-auto w-full md:w-auto pb-2">
+                    <button class="text-xs font-bold uppercase tracking-widest bg-warmCream text-deepBlack px-5 py-2 rounded-full">Semua</button>
+                    <button class="text-xs font-bold uppercase tracking-widest border border-sageGreen/30 text-sageGreen px-5 py-2 rounded-full hover:border-metallicGold hover:text-metallicGold transition-colors">Branding</button>
+                    <button class="text-xs font-bold uppercase tracking-widest border border-sageGreen/30 text-sageGreen px-5 py-2 rounded-full hover:border-metallicGold hover:text-metallicGold transition-colors">Poster</button>
+                    <button class="text-xs font-bold uppercase tracking-widest border border-sageGreen/30 text-sageGreen px-5 py-2 rounded-full hover:border-metallicGold hover:text-metallicGold transition-colors">Ilustrasi</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Grid (Masonry style using columns) -->
+            <div class="columns-1 md:columns-2 lg:columns-2 gap-8 space-y-8">
+                
+                <!-- Project 1 -->
+                <div class="reveal-up break-inside-avoid group cursor-pointer">
+                    <div class="img-hover-wrap rounded-sm mb-5 bg-deepBrown aspect-[4/5]">
+                        <img src="https://i.imgur.com/lT0ZJof.jpeg=Face+Illustration" alt="Face Illustration Branding" class="w-full h-full object-cover">
+                        <!-- Overlay -->
+                        <div class="img-hover-overlay absolute inset-0 bg-deepBlack/40 flex items-center justify-center backdrop-blur-sm">
+                            <span class="text-warmCream border border-warmCream px-6 py-3 rounded-full text-xs tracking-widest uppercase font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Lihat Project →</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-serif text-2xl text-warmCream mb-1 group-hover:text-metallicGold transition-colors">Face Illustration</h3>
+                            <p class="font-sans text-xs text-sageGreen tracking-widest uppercase">Branding • Identitas</p>
+                        </div>
+                        <span class="font-sans text-sm text-sageGreen font-light">2026</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="reveal-up break-inside-avoid group cursor-pointer mt-0 md:mt-16">
+                    <div class="img-hover-wrap rounded-sm mb-5 bg-deepBrown aspect-[16/9]">
+                        <img src="https://i.imgur.com/gIyv5jI.png=Cartoon+Style+Name" alt="Cartoon Style Name" class="w-full h-full object-cover">
+                        <div class="img-hover-overlay absolute inset-0 bg-deepBlack/40 flex items-center justify-center backdrop-blur-sm">
+                            <span class="text-warmCream border border-warmCream px-6 py-3 rounded-full text-xs tracking-widest uppercase font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Lihat Project →</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-serif text-2xl text-warmCream mb-1 group-hover:text-metallicGold transition-colors">Cartoon Style Name</h3>
+                            <p class="font-sans text-xs text-sageGreen tracking-widest uppercase">Poster • Eksperimental</p>
+                        </div>
+                        <span class="font-sans text-sm text-sageGreen font-light">2025</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="reveal-up break-inside-avoid group cursor-pointer">
+                    <div class="img-hover-wrap rounded-sm mb-5 bg-deepBrown aspect-square">
+                        <img src=https://i.imgur.com/yIU3PDV.png=Branding+Logo" alt="Branding Logo" class="w-full h-full object-cover">
+                        <div class="img-hover-overlay absolute inset-0 bg-deepBlack/40 flex items-center justify-center backdrop-blur-sm">
+                            <span class="text-warmCream border border-warmCream px-6 py-3 rounded-full text-xs tracking-widest uppercase font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Lihat Project →</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-serif text-2xl text-warmCream mb-1 group-hover:text-metallicGold transition-colors">Branding Logo</h3>
+                            <p class="font-sans text-xs text-sageGreen tracking-widest uppercase">Media Sosial • Art Direction</p>
+                        </div>
+                        <span class="font-sans text-sm text-sageGreen font-light">2026</span>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="reveal-up break-inside-avoid group cursor-pointer">
+                    <div class="img-hover-wrap rounded-sm mb-5 bg-deepBrown aspect-[4/3]">
+                        <img src=https://i.imgur.com/ZdRdXdk.jpeg=Echoes" alt="Echoes Illustration" class="w-full h-full object-cover">
+                        <div class="img-hover-overlay absolute inset-0 bg-deepBlack/40 flex items-center justify-center backdrop-blur-sm">
+                            <span class="text-warmCream border border-warmCream px-6 py-3 rounded-full text-xs tracking-widest uppercase font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Lihat Project →</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-serif text-2xl text-warmCream mb-1 group-hover:text-metallicGold transition-colors">Visual Echoes</h3>
+                            <p class="font-sans text-xs text-sageGreen tracking-widest uppercase">Ilustrasi • AI Art</p>
+                        </div>
+                        <span class="font-sans text-sm text-sageGreen font-light">2025</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-20 text-center reveal-up">
+                <a href="#" class="inline-block border border-sageGreen/50 text-warmCream font-bold text-xs tracking-widest uppercase px-10 py-4 rounded-full hover:border-metallicGold hover:text-metallicGold hover:bg-metallicGold/5 transition-all duration-300">
+                    Lihat Semua Karya
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 — LAYANAN -->
+    <section class="py-24 md:py-32 bg-deepBlack border-y border-warmCream/10">
+        <div class="container mx-auto px-6 md:px-12">
+            
+            <h2 class="reveal-up font-serif text-4xl md:text-6xl text-warmCream mb-16 md:mb-24 uppercase text-center">Apa Yang Aku Buat</h2>
+            
+            <div class="max-w-5xl mx-auto flex flex-col">
+                
+                <!-- Service List Items -->
+                <div class="reveal-up flex flex-col md:flex-row border-t border-sageGreen/20 py-8 md:py-12 group hover:bg-warmCream/5 transition-colors px-4 -mx-4 rounded-lg">
+                    <div class="font-serif text-4xl md:text-5xl text-sageGreen group-hover:text-metallicGold transition-colors w-24 mb-4 md:mb-0">01</div>
+                    <div class="flex-1">
+                        <h3 class="font-serif text-3xl md:text-4xl text-warmCream mb-4">Identitas Brand</h3>
+                        <p class="font-sans text-lg text-sageGreen max-w-2xl font-light">Desain logo, pengembangan identitas visual menyeluruh, dan pembuatan sistem branding yang konsisten untuk memperkuat posisi brand Anda.</p>
+                    </div>
+                </div>
+
+                <div class="reveal-up flex flex-col md:flex-row border-t border-sageGreen/20 py-8 md:py-12 group hover:bg-warmCream/5 transition-colors px-4 -mx-4 rounded-lg">
+                    <div class="font-serif text-4xl md:text-5xl text-sageGreen group-hover:text-metallicGold transition-colors w-24 mb-4 md:mb-0">02</div>
+                    <div class="flex-1">
+                        <h3 class="font-serif text-3xl md:text-4xl text-warmCream mb-4">Desain Grafis</h3>
+                        <p class="font-sans text-lg text-sageGreen max-w-2xl font-light">Pembuatan poster, banner, brosur, editorial, dan materi promosi cetak maupun digital yang komunikatif dan estetis.</p>
+                    </div>
+                </div>
+
+                <div class="reveal-up flex flex-col md:flex-row border-t border-sageGreen/20 py-8 md:py-12 group hover:bg-warmCream/5 transition-colors px-4 -mx-4 rounded-lg">
+                    <div class="font-serif text-4xl md:text-5xl text-sageGreen group-hover:text-metallicGold transition-colors w-24 mb-4 md:mb-0">03</div>
+                    <div class="flex-1">
+                        <h3 class="font-serif text-3xl md:text-4xl text-warmCream mb-4">Desain Media Sosial</h3>
+                        <p class="font-sans text-lg text-sageGreen max-w-2xl font-light">Perancangan grid Instagram, story template, dan visual campaign yang dirancang khusus untuk meningkatkan engagement audiens.</p>
+                    </div>
+                </div>
+
+                <div class="reveal-up flex flex-col md:flex-row border-t border-sageGreen/20 py-8 md:py-12 group hover:bg-warmCream/5 transition-colors px-4 -mx-4 rounded-lg">
+                    <div class="font-serif text-4xl md:text-5xl text-sageGreen group-hover:text-metallicGold transition-colors w-24 mb-4 md:mb-0">04</div>
+                    <div class="flex-1">
+                        <h3 class="font-serif text-3xl md:text-4xl text-warmCream mb-4">Ilustrasi & Animasi</h3>
+                        <p class="font-sans text-lg text-sageGreen max-w-2xl font-light">Character design, vector illustration, artwork custom, dan animasi pendek (motion graphics) yang dinamis untuk kebutuhan konten.</p>
+                    </div>
+                </div>
+                
+                <div class="reveal-up flex flex-col md:flex-row border-y border-sageGreen/20 py-8 md:py-12 group hover:bg-warmCream/5 transition-colors px-4 -mx-4 rounded-lg">
+                    <div class="font-serif text-4xl md:text-5xl text-sageGreen group-hover:text-metallicGold transition-colors w-24 mb-4 md:mb-0">05</div>
+                    <div class="flex-1">
+                        <h3 class="font-serif text-3xl md:text-4xl text-warmCream mb-4">Iklan & Artwork Komersial</h3>
+                        <p class="font-sans text-lg text-sageGreen max-w-2xl font-light">Desain digital campaign, promotional artwork, banner web, dan aset visual berkinerja tinggi untuk kebutuhan komersial dan marketing.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 — PROSES KREATIF -->
+    <section id="proses" class="py-24 md:py-32 bg-[#141414] overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12">
+            
+            <div class="text-center mb-20 reveal-up">
+                <span class="text-sageGreen text-xs font-bold tracking-widest uppercase mb-4 block">Metodologi</span>
+                <h2 class="font-serif text-4xl md:text-6xl text-warmCream uppercase">Cara Aku Bekerja</h2>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative max-w-6xl mx-auto">
+                <!-- Connecting Line Desktop -->
+                <div class="hidden md:block absolute top-[45px] left-0 w-full h-[1px] bg-sageGreen/30 z-0"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative z-10">
+                    
+                    <!-- Step 1 -->
+                    <div class="reveal-up flex flex-col items-start md:items-center text-left md:text-center relative">
+                        <div class="w-24 h-24 rounded-full bg-deepBlack border border-sageGreen/30 flex items-center justify-center font-serif text-3xl text-metallicGold mb-6 md:mx-auto group-hover:border-metallicGold transition-colors">01</div>
+                        <h3 class="font-serif text-2xl text-warmCream mb-3">Temukan</h3>
+                        <p class="font-sans text-sm text-sageGreen font-light">Memahami inti ide, tujuan project, target audiens, dan arah visual yang diinginkan secara mendalam.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="reveal-up reveal-delay-1 flex flex-col items-start md:items-center text-left md:text-center relative">
+                        <div class="w-24 h-24 rounded-full bg-deepBlack border border-sageGreen/30 flex items-center justify-center font-serif text-3xl text-metallicGold mb-6 md:mx-auto">02</div>
+                        <h3 class="font-serif text-2xl text-warmCream mb-3">Konsep</h3>
+                        <p class="font-sans text-sm text-sageGreen font-light">Mengembangkan beberapa konsep kreatif, moodboard, dan menentukan visual direction yang kuat.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="reveal-up reveal-delay-2 flex flex-col items-start md:items-center text-left md:text-center relative">
+                        <div class="w-24 h-24 rounded-full bg-deepBlack border border-sageGreen/30 flex items-center justify-center font-serif text-3xl text-metallicGold mb-6 md:mx-auto">03</div>
+                        <h3 class="font-serif text-2xl text-warmCream mb-3">Desain</h3>
+                        <p class="font-sans text-sm text-sageGreen font-light">Mengeksekusi konsep terpilih menjadi pengalaman visual yang matang, presisi, dan berkualitas tinggi.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="reveal-up reveal-delay-3 flex flex-col items-start md:items-center text-left md:text-center relative">
+                        <div class="w-24 h-24 rounded-full bg-deepBlack border border-sageGreen/30 flex items-center justify-center font-serif text-3xl text-metallicGold mb-6 md:mx-auto">04</div>
+                        <h3 class="font-serif text-2xl text-warmCream mb-3">Selesaikan</h3>
+                        <p class="font-sans text-sm text-sageGreen font-light">Melakukan finalisasi detail, penyempurnaan revisi, dan menyerahkan artwork siap digunakan.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07 — FILOSOFI KARYA -->
+    <section class="py-32 md:py-48 relative flex items-center justify-center min-h-[70vh] bg-deepBlack overflow-hidden">
+        <!-- Abstract gradient background -->
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-deepBrown via-deepBlack to-deepBlack"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2 class="reveal-up font-serif text-5xl md:text-7xl lg:text-8xl text-warmCream leading-tight font-bold tracking-tighter uppercase mx-auto max-w-5xl">
+                Karya yang baik <br>
+                <span class="text-outline">bukan hanya dilihat.</span> <br>
+                Tapi <span class="italic text-metallicGold font-normal">Diingat.</span>
+            </h2>
+        </div>
+    </section>
+
+    <!-- 08 — GALERI PORTOFOLIO -->
+    <section class="bg-[#0a0a0a] py-24 md:py-32">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="mb-16 reveal-up">
+                <h2 class="font-serif text-3xl md:text-4xl text-warmCream uppercase">Arsip Karya Lainnya</h2>
+            </div>
+
+            <!-- Complex Image Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <!-- Large item -->
+                <div class="col-span-2 row-span-2 img-hover-wrap rounded-sm bg-deepBrown reveal-up">
+                    <img src="https://i.imgur.com/xGv5HFx.png=Packaging" alt="Gallery" class="w-full h-full object-cover">
+                </div>
+                <!-- Small items -->
+                <div class="img-hover-wrap rounded-sm bg-deepBrown reveal-up reveal-delay-1">
+                    <img src=https://i.imgur.com/sUIYrgv.png=Logo" alt="Gallery" class="w-full h-full object-cover aspect-square">
+                </div>
+                <div class="img-hover-wrap rounded-sm bg-deepBrown reveal-up reveal-delay-2">
+                    <img src=https://i.imgur.com/j2MKwHB.jpeg=Motion" alt="Gallery" class="w-full h-full object-cover aspect-square grayscale">
+                </div>
+                <!-- Wide item -->
+                <div class="col-span-2 img-hover-wrap rounded-sm bg-deepBrown reveal-up">
+                    <img src="https://i.imgur.com/WrdqkDX.jpeg=Banner+Design" alt="Gallery" class="w-full h-full object-cover aspect-[2/1]">
+                </div>
+                
+                <!-- More items -->
+                <div class="img-hover-wrap rounded-sm bg-deepBrown reveal-up">
+                    <img src="https://i.imgur.com/5V0mgJr.jpeg=Poster" alt="Gallery" class="w-full h-full object-cover aspect-[2/3]">
+                </div>
+                <div class="col-span-2 img-hover-wrap rounded-sm bg-deepBrown reveal-up reveal-delay-1">
+                    <img src="https://i.imgur.com/TsSIkHX.jpeg=UI+Design" alt="Gallery" class="w-full h-full object-cover aspect-[4/3]">
+                </div>
+                <div class="img-hover-wrap rounded-sm bg-deepBrown reveal-up reveal-delay-2">
+                    <img src="https://i.imgur.com/jgY74x2.jpeg=Illustration" alt="Gallery" class="w-full h-full object-cover aspect-[2/3]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 09 — TENTANG KREATOR -->
+    <section class="py-24 md:py-32 bg-deepBlack border-t border-warmCream/10">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Visual / Portrait -->
+                <div class="reveal-up relative order-2 lg:order-1">
+                    <!-- Decor -->
+                    <div class="absolute -top-6 -left-6 w-32 h-32 border-t-2 border-l-2 border-metallicGold/30"></div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 border-b-2 border-r-2 border-metallicGold/30"></div>
+                    
+                    <div class="relative bg-deepBrown aspect-[3/4] rounded-sm overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                        <!-- Placeholder for Abstract Portrait -->
+                        <img src="https://i.imgur.com/DZNv3ot.png=Creator+Portrait" alt="Rezha Fahlevi Portrait" class="w-full h-full object-cover mix-blend-luminosity hover:mix-blend-normal transition-all duration-700">
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="order-1 lg:order-2">
+                    <span class="reveal-up text-sageGreen text-xs font-bold tracking-widest uppercase mb-4 block">Di Balik Karya</span>
+                    <h2 class="reveal-up font-serif text-5xl md:text-6xl text-warmCream mb-8 uppercase">Kreator & <br><span class="italic text-metallicGold">Pemikir Visual.</span></h2>
+                    
+                    <p class="reveal-up font-sans text-xl text-sageGreen font-light leading-relaxed mb-12">
+                        Desainer, visual storyteller, dan creative thinker yang berfokus mengubah ide sederhana menjadi identitas visual yang kuat. Memadukan estetika berkelas dengan strategi komunikasi untuk menghasilkan desain yang berdampak.
+                    </p>
+
+                    <!-- Skills Pills -->
+                    <div class="reveal-up flex flex-wrap gap-3">
+                        <span class="px-5 py-2 border border-sageGreen/30 text-sageGreen text-xs font-bold uppercase tracking-widest rounded-full">Branding</span>
+                        <span class="px-5 py-2 border border-sageGreen/30 text-sageGreen text-xs font-bold uppercase tracking-widest rounded-full">Desain Grafis</span>
+                        <span class="px-5 py-2 border border-sageGreen/30 text-sageGreen text-xs font-bold uppercase tracking-widest rounded-full">Art Direction</span>
+                        <span class="px-5 py-2 border border-sageGreen/30 text-sageGreen text-xs font-bold uppercase tracking-widest rounded-full">Ilustrasi AI</span>
+                        <span class="px-5 py-2 border border-sageGreen/30 text-sageGreen text-xs font-bold uppercase tracking-widest rounded-full">Edit Foto</span>
+                        <span class="px-5 py-2 border border-sageGreen/30 text-sageGreen text-xs font-bold uppercase tracking-widest rounded-full">Komunikasi Visual</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 10 — FINAL CALL TO ACTION -->
+    <section class="py-32 md:py-48 bg-deepBlack relative overflow-hidden flex items-center border-y border-warmCream/10">
+        
+        <!-- Large Background Typography for depth -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] overflow-hidden">
+            <span class="font-serif text-[20vw] font-bold text-warmCream whitespace-nowrap">KOLABORASI</span>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2 class="reveal-up font-serif text-6xl md:text-8xl lg:text-[7rem] font-bold text-warmCream uppercase tracking-tighter mb-6">
+                Punya Sebuah <span class="italic text-metallicGold font-normal">Ide?</span>
+            </h2>
+            <p class="reveal-up reveal-delay-1 font-sans text-xl md:text-2xl text-sageGreen font-light max-w-2xl mx-auto mb-16">
+                Mari ubah ide tersebut menjadi sesuatu yang layak untuk diingat. Kami siap membantu visualisasi brand Anda.
+            </p>
+            
+            <div class="reveal-up reveal-delay-2 flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="#kontak" class="w-full sm:w-auto bg-warmCream text-deepBlack font-bold text-sm tracking-widest uppercase px-12 py-6 rounded-full hover:bg-metallicGold hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(198,161,94,0.2)] hover:shadow-[0_0_60px_rgba(198,161,94,0.4)]">
+                    Mulai Project →
+                </a>
+                <a href="#karya" class="w-full sm:w-auto text-warmCream font-bold text-xs tracking-widest uppercase hover:text-metallicGold transition-colors py-4 px-8">
+                    Lihat Portofolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 — KONTAK -->
+    <section id="kontak" class="py-24 md:py-32 bg-[#141414]">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                
+                <!-- Contact Info -->
+                <div class="reveal-up">
+                    <h2 class="font-serif text-4xl md:text-6xl text-warmCream uppercase leading-tight mb-6">
+                        Mari Menciptakan <br>Sesuatu yang <br><span class="italic text-metallicGold">Luar Biasa.</span>
+                    </h2>
+                    <p class="font-sans text-lg text-sageGreen font-light mb-16 max-w-md">
+                        Punya project, ingin berkolaborasi, atau memiliki ide kreatif? Jangan ragu untuk menyapa, mari berbicara.
+                    </p>
+                    
+                    <div class="space-y-10">
+                        <div>
+                            <span class="block font-sans text-xs uppercase tracking-widest text-sageGreen font-bold mb-2">Email</span>
+                            <a href="mailto:rezzfhlvinew@gmail.com" class="font-serif text-2xl text-warmCream hover:text-metallicGold transition-colors">rezzfhlvinew@gmail.com</a>
+                        </div>
+                        <div>
+                            <span class="block font-sans text-xs uppercase tracking-widest text-sageGreen font-bold mb-2">WhatsApp</span>
+                            <a href="https://wa.me/628998951070" class="font-serif text-2xl text-warmCream hover:text-metallicGold transition-colors">+62 899-8951-070</a>
+                        </div>
+                        <div>
+                            <span class="block font-sans text-xs uppercase tracking-widest text-sageGreen font-bold mb-2">Instagram</span>
+                            <a href="#" class="font-serif text-2xl text-warmCream hover:text-metallicGold transition-colors">@rezzfhlvi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="reveal-up reveal-delay-1 bg-deepBlack p-8 md:p-12 rounded-sm border border-warmCream/5 shadow-2xl">
+                    <form onsubmit="event.preventDefault();" class="space-y-8">
+                        <div>
+                            <label for="name" class="sr-only">Nama</label>
+                            <input type="text" id="name" placeholder="Nama Anda" class="form-input" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" id="email" placeholder="Alamat Email" class="form-input" required>
+                        </div>
+                        
+                        <div>
+                            <label for="project" class="sr-only">Jenis Project</label>
+                            <select id="project" class="form-input text-sageGreen appearance-none bg-transparent cursor-pointer">
+                                <option value="" disabled selected>Pilih Jenis Project</option>
+                                <option value="branding" class="bg-deepBlack">Branding & Logo</option>
+                                <option value="grafis" class="bg-deepBlack">Desain Grafis / Poster</option>
+                                <option value="sosmed" class="bg-deepBlack">Media Sosial</option>
+                                <option value="lainnya" class="bg-deepBlack">Lainnya / Kolaborasi</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="sr-only">Pesan</label>
+                            <textarea id="message" rows="4" placeholder="Ceritakan Tentang Project Anda..." class="form-input resize-none" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-warmCream text-deepBlack font-bold text-xs tracking-widest uppercase py-5 rounded-sm hover:bg-metallicGold transition-colors mt-8">
+                            Kirim Pesan →
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 12 — FOOTER -->
+    <footer class="bg-deepBlack pt-20 pb-10 border-t border-warmCream/10">
+        <div class="container mx-auto px-6 md:px-12">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-16 gap-10 text-center md:text-left">
+                <!-- Brand -->
+                <div>
+                    <a href="#" class="font-serif text-3xl font-bold tracking-wide text-warmCream uppercase block mb-3">
+                        Rezha <span class="text-metallicGold italic">Fahlevi</span>
+                    </a>
+                    <p class="font-sans text-xs tracking-widest text-sageGreen uppercase font-bold">Ide • Penerapan • Dampak.</p>
+                </div>
+                
+                <!-- Nav -->
+                <nav class="flex flex-wrap justify-center gap-6">
+                    <a href="#beranda" class="text-xs font-bold tracking-widest uppercase text-sageGreen hover:text-metallicGold transition-colors">Beranda</a>
+                    <a href="#tentang" class="text-xs font-bold tracking-widest uppercase text-sageGreen hover:text-metallicGold transition-colors">Tentang</a>
+                    <a href="#karya" class="text-xs font-bold tracking-widest uppercase text-sageGreen hover:text-metallicGold transition-colors">Karya</a>
+                    <a href="#proses" class="text-xs font-bold tracking-widest uppercase text-sageGreen hover:text-metallicGold transition-colors">Layanan</a>
+                    <a href="#kontak" class="text-xs font-bold tracking-widest uppercase text-sageGreen hover:text-metallicGold transition-colors">Kontak</a>
+                </nav>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center border-t border-warmCream/10 pt-8 text-xs font-sans text-sageGreen uppercase tracking-widest gap-6">
+                <p>&copy; Rezha Fahlevi. Seluruh Hak Cipta Dilindungi.</p>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-metallicGold transition-colors">Email</a>
+                    <a href="#" class="hover:text-metallicGold transition-colors">WhatsApp</a>
+                    <a href="#" class="hover:text-metallicGold transition-colors">Instagram</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = document.querySelectorAll('.mobile-link');
+            let isMenuOpen = false;
+
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    menu.classList.remove('opacity-0', 'pointer-events-none');
+                    menu.classList.add('opacity-100', 'pointer-events-auto');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                } else {
+                    menu.classList.add('opacity-0', 'pointer-events-none');
+                    menu.classList.remove('opacity-100', 'pointer-events-auto');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            btn.addEventListener('click', toggleMenu);
+            links.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+
+            // 2. Sticky Header Effects (Glassmorphism on scroll)
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-deepBlack/90', 'backdrop-blur-md', 'border-warmCream/10', 'py-4');
+                    header.classList.remove('py-6', 'border-transparent');
+                } else {
+                    header.classList.remove('bg-deepBlack/90', 'backdrop-blur-md', 'border-warmCream/10', 'py-4');
+                    header.classList.add('py-6', 'border-transparent');
+                }
+            });
+
+            // 3. Scroll Reveal Animation via Intersection Observer
+            const revealElements = document.querySelectorAll('.reveal-up');
+            
+            const revealOptions = {
+                threshold: 0.15, // Trigger when 15% of element is visible
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('active');
+                        // Optional: Stop observing once revealed
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
